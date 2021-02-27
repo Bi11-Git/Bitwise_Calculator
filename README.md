@@ -18,10 +18,10 @@ Number XOR Mask -- The EXCLUSIVE-OR operator compares two bits and generates a r
 returns 0.  
 NOT Number -- The COMPLEMENT operator is used to invert all of the bits of the operand.  
 Number Shift Right Mask -- The SHIFT RIGHT operator moves the bits to the right, discards the far right bit, and assigns the leftmost  
-bit a value of 0. Each move to the right effectively divides op1 in half. 
+bit a value of 0. Each move to the right effectively divides op1 in half.  
 Number Shift left Mask -- The SHIFT LEFT operator moves the bits to the left, discards the far left bit, and assigns the rightmost bit  
 a value of 0. Each move to the left effectively multiplies op1 by 2.  
-Note Both operands associated with the bitwise operator must be integers. 
+Note Both operands associated with the bitwise operator must be integers.  
 
 # Author
 
