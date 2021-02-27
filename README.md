@@ -10,9 +10,9 @@ this file."
 
 The following operators are available:
 
-Convert Number -- Print the number without any operation but you can change the data type of input or output.
+Convert Number -- Print the number without any operation but you can change the data type of input or output.  
 The following data types are available : Binary, Decimal and Hexadecimal
-Number AND Mask -- The AND operator compares two bits and generates a result of 1 if both bits are 1; otherwise, it returns 0./n
+Number AND Mask -- The AND operator compares two bits and generates a result of 1 if both bits are 1; otherwise, it returns 0. 
 Number OR Mask -- The OR operator compares two bits and generates a result of 1 if the bits are complementary; otherwise, it returns 0.
 Number XOR Mask -- The EXCLUSIVE-OR operator compares two bits and generates a result of 1 if either or both bits are 1; otherwise, it 
 returns 0.
