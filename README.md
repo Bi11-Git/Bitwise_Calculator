@@ -11,6 +11,7 @@ this file."
 The following operators are available:
 
 Convert Number -- Print the number without any operation but you can change the data type of input or output.
+
 The following data types are available : Binary, Decimal and Hexadecimal
 Number AND Mask -- The AND operator compares two bits and generates a result of 1 if both bits are 1; otherwise, it returns 0.
 Number OR Mask -- The OR operator compares two bits and generates a result of 1 if the bits are complementary; otherwise, it returns 0.
@@ -60,4 +61,9 @@ Run main using
 ```
 java -cp target/Bitwise_Calculator-1.0-SNAPSHOT.jar Calculator
 ```
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
 
