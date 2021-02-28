@@ -158,8 +158,11 @@ public class Calculator {
 
                         if (number.charAt(i) == '0') {
                             number.setCharAt(i, '1');
-                        } else {
+                        } else if (number.charAt(i) == '1') {
                             number.setCharAt(i, '0');
+                        } else {
+                            numberErrText.setVisible(true);
+                            return;
                         }
                     }
 
