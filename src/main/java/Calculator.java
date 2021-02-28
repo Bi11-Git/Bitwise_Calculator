@@ -22,6 +22,8 @@ public class Calculator {
     private JTextField resultTextField;
     private JComboBox comboBox3;
     private JButton convertButton;
+    private JLabel numberErrText;
+    private JLabel maskErrText;
 
     private String numDataType = "Binary";
     private String maskDataType = "Binary";
@@ -53,7 +55,18 @@ public class Calculator {
         convertButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int number = getNumber();
+
+                numberErrText.setVisible(false);
+
+                int number = 0;
+
+                try {
+                    number = getNumber();
+                } catch (Exception exception) {
+                    numberErrText.setVisible(true);
+                }
+
+
                 printResult(number);
             }
         });
@@ -61,9 +74,22 @@ public class Calculator {
         ANDButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                numberErrText.setVisible(false);
+                maskErrText.setVisible(false);
 
-                int number = getNumber();
-                int mask = getMask();
+                int number = 0;
+                try {
+                    number = getNumber();
+                } catch (Exception exception) {
+                    numberErrText.setVisible(true);
+                }
+                int mask = 0;
+
+                try {
+                    mask = getMask();
+                } catch (Exception exception) {
+                    maskErrText.setVisible(true);
+                }
 
                 printResult(number & mask);
 
@@ -74,8 +100,21 @@ public class Calculator {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                int number = getNumber();
-                int mask = getMask();
+                numberErrText.setVisible(false);
+                maskErrText.setVisible(false);
+
+                int number = 0;
+                try {
+                    number = getNumber();
+                } catch (Exception exception) {
+                    numberErrText.setVisible(true);
+                }
+                int mask = 0;
+                try {
+                    mask = getMask();
+                } catch (Exception exception) {
+                    maskErrText.setVisible(true);
+                }
 
                 printResult(number | mask);
 
@@ -86,8 +125,21 @@ public class Calculator {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                int number = getNumber();
-                int mask = getMask();
+                numberErrText.setVisible(false);
+                maskErrText.setVisible(false);
+
+                int number = 0;
+                try {
+                    number = getNumber();
+                } catch (Exception exception) {
+                    numberErrText.setVisible(true);
+                }
+                int mask = 0;
+                try {
+                    mask = getMask();
+                } catch (Exception exception) {
+                    maskErrText.setVisible(true);
+                }
 
                 printResult(number ^ mask);
             }
@@ -96,6 +148,8 @@ public class Calculator {
         NOTButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                numberErrText.setVisible(false);
 
                 if (numDataType.contentEquals("Binary")) {
                     StringBuilder number = new StringBuilder(numberTextField.getText());
@@ -119,7 +173,12 @@ public class Calculator {
                     return;
                 }
 
-                int number = getNumber();
+                int number = 0;
+                try {
+                    number = getNumber();
+                } catch (Exception exception) {
+                    numberErrText.setVisible(true);
+                }
                 int length = Integer.toBinaryString(number).length();
 
                 int mask = -1;
@@ -135,8 +194,21 @@ public class Calculator {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                int number = getNumber();
-                int mask = getMask();
+                numberErrText.setVisible(false);
+                maskErrText.setVisible(false);
+
+                int number = 0;
+                try {
+                    number = getNumber();
+                } catch (Exception exception) {
+                    numberErrText.setVisible(true);
+                }
+                int mask = 0;
+                try {
+                    mask = getMask();
+                } catch (Exception exception) {
+                    maskErrText.setVisible(true);
+                }
 
                 printResult(number << mask);
             }
@@ -146,8 +218,21 @@ public class Calculator {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                int number = getNumber();
-                int mask = getMask();
+                numberErrText.setVisible(false);
+                maskErrText.setVisible(false);
+
+                int number = 0;
+                try {
+                    number = getNumber();
+                } catch (Exception exception) {
+                    numberErrText.setVisible(true);
+                }
+                int mask = 0;
+                try {
+                    mask = getMask();
+                } catch (Exception exception) {
+                    maskErrText.setVisible(true);
+                }
 
                 printResult(number >> mask);
             }
@@ -163,7 +248,7 @@ public class Calculator {
         frame.setResizable(false);
     }
 
-    private int getNumber() {
+    private int getNumber() throws Exception {
         int number = 0;
 
         switch (numDataType) {
@@ -181,7 +266,7 @@ public class Calculator {
         return number;
     }
 
-    private int getMask() {
+    private int getMask() throws Exception {
 
         int mask = 0;
 
@@ -243,11 +328,12 @@ public class Calculator {
         panel.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(4, 9, new Insets(20, 20, 20, 20), -1, -1));
         Font panelFont = this.$$$getFont$$$(null, Font.PLAIN, 20, panel.getFont());
         if (panelFont != null) panel.setFont(panelFont);
+        panel.setVisible(true);
         numberTextField = new JTextField();
         Font numberTextFieldFont = this.$$$getFont$$$("Tahoma", Font.PLAIN, 20, numberTextField.getFont());
         if (numberTextFieldFont != null) numberTextField.setFont(numberTextFieldFont);
         numberTextField.setText("");
-        panel.add(numberTextField, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 7, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
+        panel.add(numberTextField, new com.intellij.uiDesigner.core.GridConstraints(0, 1, 1, 6, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         comboBox1 = new JComboBox();
         Font comboBox1Font = this.$$$getFont$$$(null, Font.PLAIN, 20, comboBox1.getFont());
         if (comboBox1Font != null) comboBox1.setFont(comboBox1Font);
@@ -265,7 +351,7 @@ public class Calculator {
         maskTextField = new JTextField();
         Font maskTextFieldFont = this.$$$getFont$$$(null, Font.PLAIN, 20, maskTextField.getFont());
         if (maskTextFieldFont != null) maskTextField.setFont(maskTextFieldFont);
-        panel.add(maskTextField, new com.intellij.uiDesigner.core.GridConstraints(1, 1, 1, 7, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
+        panel.add(maskTextField, new com.intellij.uiDesigner.core.GridConstraints(1, 1, 1, 6, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         final JLabel label2 = new JLabel();
         Font label2Font = this.$$$getFont$$$(null, Font.PLAIN, 20, label2.getFont());
         if (label2Font != null) label2.setFont(label2Font);
@@ -314,7 +400,7 @@ public class Calculator {
         resultTextField.setEditable(false);
         Font resultTextFieldFont = this.$$$getFont$$$(null, Font.PLAIN, 20, resultTextField.getFont());
         if (resultTextFieldFont != null) resultTextField.setFont(resultTextFieldFont);
-        panel.add(resultTextField, new com.intellij.uiDesigner.core.GridConstraints(3, 1, 1, 7, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
+        panel.add(resultTextField, new com.intellij.uiDesigner.core.GridConstraints(3, 1, 1, 6, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         final JLabel label3 = new JLabel();
         Font label3Font = this.$$$getFont$$$(null, Font.PLAIN, 20, label3.getFont());
         if (label3Font != null) label3.setFont(label3Font);
@@ -334,6 +420,26 @@ public class Calculator {
         if (convertButtonFont != null) convertButton.setFont(convertButtonFont);
         convertButton.setText("Convert");
         panel.add(convertButton, new com.intellij.uiDesigner.core.GridConstraints(2, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        numberErrText = new JLabel();
+        numberErrText.setBackground(new Color(-12828863));
+        numberErrText.setEnabled(true);
+        Font numberErrTextFont = this.$$$getFont$$$(null, Font.PLAIN, 14, numberErrText.getFont());
+        if (numberErrTextFont != null) numberErrText.setFont(numberErrTextFont);
+        numberErrText.setForeground(new Color(-4521728));
+        numberErrText.setText("Wrong Input!");
+        numberErrText.setVisible(false);
+        numberErrText.putClientProperty("html.disable", Boolean.FALSE);
+        panel.add(numberErrText, new com.intellij.uiDesigner.core.GridConstraints(0, 7, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        maskErrText = new JLabel();
+        maskErrText.setBackground(new Color(-12828863));
+        maskErrText.setEnabled(true);
+        Font maskErrTextFont = this.$$$getFont$$$(null, Font.PLAIN, 14, maskErrText.getFont());
+        if (maskErrTextFont != null) maskErrText.setFont(maskErrTextFont);
+        maskErrText.setForeground(new Color(-4521728));
+        maskErrText.setText("Wrong Input!");
+        maskErrText.setVisible(false);
+        maskErrText.putClientProperty("html.disable", Boolean.FALSE);
+        panel.add(maskErrText, new com.intellij.uiDesigner.core.GridConstraints(1, 7, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
 
     /**
