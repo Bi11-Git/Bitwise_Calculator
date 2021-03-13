@@ -1,5 +1,5 @@
 
-# Bitwise Calculator
+# Bitwise Calculator  http://coronavirus-report-gr.herokuapp.com/
 The bitwise operators are similar to the logical operators, except that they work on a smaller scale -- binary representations of data.
 Bitwise operators are used to change individual bits in an operand. A single byte of computer memory-when viewed as 8 bits-can signify 
 the true/false status of 8 flags because each bit can be used as a boolean variable that can hold one of two values: true or false. A 
